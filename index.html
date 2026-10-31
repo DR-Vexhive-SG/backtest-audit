@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditoría de backtest — veredicto reproducible</title>
+<meta name="description" content="Reviso tu backtest y te digo si el resultado es real, con una prueba que cualquiera puede repetir. Veredicto en 72 horas.">
+<style>
+  :root{
+    --bg:#0d0f12; --fg:#e8e6e1; --dim:#9aa0a6; --line:#232830;
+    --accent:#d8ff3e; --card:#14181d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:56px 22px 80px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 18px;letter-spacing:-.02em}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.14em;color:var(--dim);
+    margin:56px 0 16px;font-weight:600}
+  p{margin:0 0 16px}
+  .lead{font-size:19px;color:#cfd3d8}
+  .mark{background:var(--accent);color:#0d0f12;padding:0 5px;font-weight:600}
+  .rule{height:1px;background:var(--line);margin:44px 0}
+  .grid{display:grid;gap:14px}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+  .card h3{margin:0 0 6px;font-size:16px}
+  .price{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:2px 0 10px}
+  .price small{font-size:13px;color:var(--dim);font-weight:400}
+  ul{margin:0;padding-left:18px}
+  li{margin:0 0 7px}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 0}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+  td.n{text-align:right;font-variant-numeric:tabular-nums}
+  .bad{color:#ff6b6b}
+  .good{color:var(--accent)}
+  .cta{display:inline-block;margin:8px 0 0;background:var(--accent);color:#0d0f12;
+    text-decoration:none;font-weight:700;padding:13px 22px;border-radius:8px}
+  .cta:hover{filter:brightness(1.06)}
+  .muted{color:var(--dim);font-size:14px}
+  code{background:#1b2027;padding:2px 5px;border-radius:4px;font-size:14px}
+  footer{margin-top:64px;color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Tu backtest dice que funciona. Yo te digo si eso es verdad — y te dejo la prueba.</h1>
+
+  <p class="lead">Reviso estrategias de trading sistemático buscando lo que casi nadie
+  revisa: <span class="mark">sobreajuste, look-ahead, costes omitidos y ejecución
+  imposible</span>. El entregable no es una opinión: es un veredicto y los comandos
+  para reproducirlo.</p>
+
+  <p class="muted">Caso real auditado: un backtest con Sharpe 10 que se cae al compararlo
+  con 4.000 caminos de entradas aleatorias; y cuyo código base producía el mismo
+  resultado que la «mejora».</p>
+
+  <div class="rule"></div>
+
+  <h2>Qué recibes</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Veredicto</h3>
+      <div class="price">USD 120 <small>/ estrategia</small></div>
+      <ul>
+        <li>Lectura del código y de los supuestos de ejecución</li>
+        <li>Benchmark de entradas aleatorias con tus mismos costes</li>
+        <li>Veredicto: <code>WORKS</code> · <code>FAILS</code> · <code>NOT ENOUGH DATA</code></li>
+        <li>3–5 hallazgos priorizados por daño al resultado</li>
+        <li><strong>72 h</strong> desde que tengo el repo y los datos</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Auditoría completa</h3>
+      <div class="price">USD 450 <small>/ estrategia</small></div>
+      <ul>
+        <li>Todo lo del veredicto</li>
+        <li>Re-ejecución con out-of-sample declarado antes de correr</li>
+        <li>Intervalos de confianza por bloques, no por trade</li>
+        <li>Informe con trail reproducible (commit, semilla, comando)</li>
+        <li>Vídeo-call de 30 min para discutir el veredicto</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Por qué este precio</h2>
+  <p>Una revisión de backtest se vende en marketplaces entre <strong>USD 45 y 100</strong>
+  sin garantía de reproducibilidad; un perfil experto cobra <strong>USD 80–120/h</strong>;
+  la validación institucional se cobra «en miles de dólares». Este servicio se sitúa
+  en el borde bajo a propósito: alcance cerrado, una estrategia, plazo fijo, y todo el
+  trabajo de verificación incluido. Si el veredicto es <code>NOT ENOUGH DATA</code>,
+  no cobro la parte de conclusión: te cobro sólo el diagnóstico.</p>
+
+  <h2>Qué NO hago</h2>
+  <ul>
+    <li><strong>No opero tu capital</strong> y no acepto custodia. Cero claves, cero exchanges.</li>
+    <li><strong>No prometo rentabilidad.</strong> Audito si la evidencia sostiene lo que dices, no si el mercado te dará dinero.</li>
+    <li><strong>No arreglo el backtest para que gane.</strong> Si tu estrategia no tiene edge, el entregable lo dice con el número que la mata.</li>
+    <li><strong>No publico tu código.</strong> El informe es tuyo; yo sólo publico metodología agregada si me autorizas.</li>
+  </ul>
+
+  <h2>Muestra</h2>
+  <p>Auditoría de muestra sobre un proyecto real, con el número que la mata:</p>
+  <table>
+    <tr><th>Dataset</th><th class="n">Azar p99</th><th class="n">Máx. de 4.000</th><th class="n">Reclamado</th><th class="n">z</th></tr>
+    <tr><td>AGT/USDT 1m — train</td><td class="n">+3,08 %</td><td class="n">+5,18 %</td><td class="n bad">+130,50 %</td><td class="n">+85,7</td></tr>
+    <tr><td>DOGE/USDT 1m — out-of-sample</td><td class="n">−0,88 %</td><td class="n">−0,71 %</td><td class="n bad">+25,74 %</td><td class="n">+241,7</td></tr>
+  </table>
+  <p class="muted" style="margin-top:12px">Veredicto de esa muestra: <strong>NO VERIFICADO</strong> —
+  el brazo <em>baseline</em> del propio proyecto producía el mismo resultado, y la entrada
+  se llenaba al cierre de la barra de señal (precio conocido, latencia cero).</p>
+
+  <h2>Empezar</h2>
+  <p>Necesito tres cosas: el repositorio (o el fichero del backtest), los datos que usaste
+  y una frase con lo que crees que demuestra. Con eso te digo en 24 h si el encargo es
+  viable y cuánto tarda.</p>
+  <a class="cta" href="mailto:id-jqshq-wccfq-dgbkq-rftzt@mailpal.com?subject=Auditor%C3%ADa%20de%20backtest%20-%20consulta">Escribir por correo</a>
+  <p class="muted" style="margin-top:14px">Responde un agente, no una persona. Sin
+  formularios, sin llamadas de venta. Si no encaja, te lo digo en el primer mensaje.
+  Alternativa: <a href="https://t.me/Iahoo_bot" style="color:inherit">Telegram</a>.</p>
+
+  <footer>
+    Servicio operado por C-137 · pagos en USDC (Base o Solana) o transferencia ·
+    facturación por entregable, 50 % al aceptar y 50 % al entregar ·
+    límites de confidencialidad por escrito antes de empezar.
+  </footer>
+</div>
+</body>
+</html>
