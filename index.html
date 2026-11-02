@@ -115,17 +115,34 @@
     <li><strong>No publico tu código.</strong> El informe es tuyo; yo sólo publico metodología agregada si me autorizas.</li>
   </ul>
 
-  <h2>Muestra</h2>
-  <p>Auditoría de muestra sobre un proyecto real, con el número que la mata:</p>
-  <table>
-    <tr><th>Dataset</th><th class="n">Azar p99</th><th class="n">Máx. de 4.000</th><th class="n">Reclamado</th><th class="n">z</th></tr>
-    <tr><td>AGT/USDT 1m — train</td><td class="n">+3,08 %</td><td class="n">+5,18 %</td><td class="n bad">+130,50 %</td><td class="n">+85,7</td></tr>
-    <tr><td>DOGE/USDT 1m — out-of-sample</td><td class="n">−0,88 %</td><td class="n">−0,71 %</td><td class="n bad">+25,74 %</td><td class="n">+241,7</td></tr>
-  </table>
-  <p class="muted" style="margin-top:12px">Veredicto de esa muestra: <strong>NO VERIFICADO</strong> —
-  el brazo <em>baseline</em> del propio proyecto producía el mismo resultado, y la entrada
-  se llenaba al cierre de la barra de señal (precio conocido, latencia cero).
-  La auditoría auditada es sobre un sistema <strong>propio</strong>: <a href="sample.html">leer la muestra completa</a>.</p>
+  <h2>Portafolio y muestras reales</h2>
+  <p>Tres casos auditados con metodología abierta y reproducible:</p>
+
+  <div class="card" style="margin-bottom:14px">
+    <h3>1. NostalgiaForInfinity (Freqtrade · 3.500+ estrellas)</h3>
+    <p class="muted">Estrategia cuantitativa multi-señal. Veredicto: <strong class="bad">NO VERIFICADO PARA CAPITAL PASIVO</strong>.</p>
+    <p style="font-size:14px">Hallazgos: sobreajuste por optimización bayesiana de >120 parámetros; decaimiento rápido de alfa evidenciado por su daemon de actualización diaria obligatorio; y slippage destructivo en listas de 40–80 pares.</p>
+    <a href="sample-nfi.html" style="color:var(--accent);font-size:14px;font-weight:600">Leer auditoría NFI completa →</a>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h3>2. Passivbot (Futuros perpetuos Bybit/OKX/Hyperliquid · 2.100+ estrellas)</h3>
+    <p class="muted">Bot de grid y martingala en derivados. Veredicto: <strong style="color:#f2c14e">CONDICIONALMENTE VERIFICADO CON ALTO RIESGO DE COLA</strong>.</p>
+    <p style="font-size:14px">Hallazgos: riesgo de liquidación del 100 % inherente al promedio a la baja con apalancamiento; sesgo de supervivencia en su optimizador genético; el mecanismo de desatasco consume meses de beneficio en una sola caída.</p>
+    <a href="sample-passivbot.html" style="color:var(--accent);font-size:14px;font-weight:600">Leer auditoría Passivbot completa →</a>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h3>3. Benchmark propio (ODE — Algoritmo simbólico 1m)</h3>
+    <p class="muted">Estrategia interna con +130,5 % reclamado. Veredicto: <strong class="bad">NO VERIFICADO</strong>.</p>
+    <table>
+      <tr><th>Dataset</th><th class="n">Azar p99</th><th class="n">Máx. de 4.000</th><th class="n">Reclamado</th><th class="n">z</th></tr>
+      <tr><td>AGT/USDT 1m — train</td><td class="n">+3,08 %</td><td class="n">+5,18 %</td><td class="n bad">+130,50 %</td><td class="n">+85,7</td></tr>
+      <tr><td>DOGE/USDT 1m — out-of-sample</td><td class="n">−0,88 %</td><td class="n">−0,71 %</td><td class="n bad">+25,74 %</td><td class="n">+241,7</td></tr>
+    </table>
+    <p style="font-size:14px;margin-top:10px">La ventaja reclamada estaba 25–42× por encima del techo del azar por llenar órdenes en el cierre de la vela de señal con latencia cero.</p>
+    <a href="sample.html" style="color:var(--accent);font-size:14px;font-weight:600">Leer auditoría benchmark propia →</a>
+  </div>
 
   <h2>Empezar</h2>
   <p>Necesito tres cosas: el repositorio (o el fichero del backtest), los datos que usaste
